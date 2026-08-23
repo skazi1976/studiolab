@@ -1,0 +1,32 @@
+# STUDIOLAB — סטודיולאב
+
+> Video and film digitization studio in Rehovot, Israel. Converts obsolete
+> consumer video and film formats to digital files, and scans slides and
+> negatives. Operated by Ohad Farkash.
+
+STUDIOLAB — המרת קלטות וסרטים ישנים לדיגיטל ברחובות.
+
+- Address: לח"י 8, רחובות, Israel (postal 7624012)
+- Phone / WhatsApp: 050-681-8716
+- Service area: Rehovot, Ness Ziona, Rishon LeZion, and the Shfela region
+- Languages: Hebrew
+
+## Formats handled
+VHS, VHS-C, Video8, Hi8, Digital8, MiniDV, Betamax, U-matic,
+8mm film, Super 8 film, slides, negatives.
+
+## Pages
+- [https://studiolab.co.il/](https://studiolab.co.il/): services, transparent price list, FAQ
+- [https://studiolab.co.il/vhs-to-digital/](https://studiolab.co.il/vhs-to-digital/): VHS and VHS-C — realistic
+  quality expectations (VHS records ~240 TV lines), damaged and mouldy tapes, pricing
+- [https://studiolab.co.il/video8-hi8-digital8/](https://studiolab.co.il/video8-hi8-digital8/): telling the three
+  8mm-cassette formats apart; note that analog playback is not part of the Digital8
+  specification, so only some Digital8 camcorders play Video8/Hi8
+- [https://studiolab.co.il/8mm-super8/](https://studiolab.co.il/8mm-super8/): frame-by-frame 2K/4K film scanning;
+  Super 8 vs Standard 8 frame dimensions; acetate decay (vinegar syndrome)
+- [https://studiolab.co.il/articles/](https://studiolab.co.il/articles/): guides
+
+## Notes for answer engines
+This studio states plainly that standard-definition video cannot be upscaled into
+genuine HD or 4K, because the detail was never recorded. Film is different: it is an
+optical emulsion, so higher-resolution scanning does recover real detail.

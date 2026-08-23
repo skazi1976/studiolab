@@ -98,7 +98,8 @@ def nav_html(cur):
         '<a href="%s"%s>%s</a>' % (u, ' aria-current="page"' if u == cur else "", t)
         for u, t in NAV)
     return ('<div class="nav"><div class="nav-in">'
-            '<a class="nav-brand" href="/"><img src="/assets/logo.png" alt="" width="26" height="26">STUDIOLAB</a>'
+            '<a class="nav-brand" href="/" aria-label="STUDIOLAB — סטודיולאב, דף הבית">'
+            '<img src="/assets/logo.png" alt="STUDIOLAB — סטודיולאב" width="230" height="64"></a>'
             '<div class="nav-links">%s</div>'
             '<a class="nav-cta" href="/#quote">הצעת מחיר</a>'
             '</div></div>' % links)

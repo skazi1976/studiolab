@@ -1,3 +1,29 @@
+# -*- coding: utf-8 -*-
+r"""Design system for studiolab.co.il — lifted from the live Base44 site.
+
+Measured off the running site rather than invented, because the first rebuild
+looked like an audit report (bordered boxes, teal, tight spacing, no hero) and
+the owner rightly said it did not look like his site.
+
+What the original actually does:
+
+  hero        linear-gradient(to bottom right, #0F172A, #1E3A8A, #1E293B)
+              h1 60px / 800 / white / centred, 128px vertical padding
+  page        white, with alternating #F8FAFC sections at 80px padding
+  headings    h2 36px / 700 / #0F172A / CENTRED     h3 20px / 700
+  text        #334155 body, #64748B muted, #0F172A ink
+  primary CTA #F59E0B background with #0F172A text, weight 700, radius 6-12px
+  icon tiles  80x80, radius 16px, three gradients:
+                #EF4444->#DB2777   #F59E0B->#EA580C   #2563EB->#4338CA
+  cards       white, radius 12px, hairline #E5E5E5 border
+  container   ~1265px (max-w-7xl)
+
+Only deliberate departure: the original uses the Tailwind system-font stack,
+which renders Hebrew poorly on Windows and Android. Heebo carries the 800-weight
+headings the design calls for, with Assistant for body copy.
+"""
+
+CSS = r"""
 :root{
   --navy-900:#0F172A; --navy-800:#1E293B; --blue-900:#1E3A8A;
   --page:#FFFFFF; --alt:#F8FAFC;
@@ -207,3 +233,4 @@ footer.site{background:var(--navy-900);color:#CBD5E1}
   .quote{padding:24px}
   .card{padding:24px 20px}
 }
+"""

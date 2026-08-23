@@ -8,7 +8,8 @@ Run:  python make.py
 """
 import io, os, re, json, sys, shutil
 from build import (CSS, SITE, PHONE_DISPLAY, PHONE_TEL, WA, ADDR, UPDATED, ROOT,
-                   BUSINESS, WEBSITE, crumbs, faq, shell, HOME_BODY, HOME_FAQ)
+                   BUSINESS, WEBSITE, crumbs, faq, shell)
+from home import BODY as HOME_BODY, HOME_FAQ
 
 # NOTE: build.py already rebinds sys.stdout to a UTF-8 wrapper on import.
 # Doing it a second time here collects the first wrapper and closes the
@@ -22,17 +23,43 @@ SRC = r"D:\yupoo\studiolab-seo"
 
 
 def lift(fname):
+    """Pull a standalone service page into the shared layout.
+
+    The standalone files put the h1 inside the reading column. The redesign
+    gives every page the same full-bleed tinted head as the homepage, and turns
+    the trailing call-to-action into the navy band the homepage closes on.
+    """
     h = io.open(os.path.join(SRC, fname), encoding="utf-8").read()
-    m = re.search(r'<div class="wrap">(.*?)</div>\s*<script type="application/ld\+json">',
+    m = re.search('<div class="wrap">(.*?)</div>\\s*<script type="application/ld\\+json">',
                   h, re.S)
     if not m:
         raise SystemExit("cannot lift body: " + fname)
     body = m.group(1)
-    # drop the standalone author block; the shell re-adds it uniformly
-    body = re.sub(r'<p class="meta">.*?</p>', "", body, flags=re.S)
-    g = json.loads(re.search(r'<script type="application/ld\+json">(.*?)</script>',
+    body = re.sub('<p class="meta">.*?</p>', "", body, flags=re.S)
+
+    crumb = re.search('<nav class="crumb">.*?</nav>', body, re.S)
+    crumb_html = crumb.group(0) if crumb else ""
+    if crumb:
+        body = body.replace(crumb_html, "", 1)
+
+    hd = re.search('<header[^>]*>(.*?)</header>', body, re.S)
+    head_html = ""
+    if hd:
+        body = body.replace(hd.group(0), "", 1)
+        head_html = '<header class="pg-head"><div class="in">%s</div></header>' % hd.group(1)
+
+    cta = re.search('<div class="cta">(.*?)</div>\\s*$', body.strip(), re.S)
+    band = ""
+    if cta:
+        body = body.replace(cta.group(0), "", 1)
+        band = '<section class="band"><div class="in">%s</div></section>' % cta.group(1)
+
+    body = body.replace('class="faq"', 'class="faq-item"')
+    body = body.replace('class="btn btn-tel"', 'class="btn btn-dark"')
+
+    g = json.loads(re.search('<script type="application/ld\\+json">(.*?)</script>',
                              h, re.S).group(1))["@graph"]
-    return '<div class="wrap">' + body + "\n</div>", g
+    return head_html + crumb_html + '<div class="wrap">' + body + "</div>" + band, g
 
 
 SERVICE = [
@@ -65,12 +92,12 @@ _CTA = """<div class="cta">
 </div>
 </div>""".format(wa=WA, tel=PHONE_TEL, disp=PHONE_DISPLAY)
 
-ARTICLE = """<div class="wrap">
-<nav class="crumb"><a href="/">דף הבית</a> &#8592; <a href="/articles/">מאמרים</a> &#8592; לפני שממירים</nav>
-<header class="pg">
+ARTICLE = """<header class="pg-head"><div class="in">
 <h1>{t}</h1>
 <p class="tagline">איך לזהות את הפורמט, איך לזהות קלטת בסיכון, איך לאחסן נכון, ואיזו איכות באמת אפשר לצפות לה.</p>
-</header>
+</div></header>
+<nav class="crumb"><a href="/">דף הבית</a> &#8592; <a href="/articles/">מאמרים</a> &#8592; לפני שממירים</nav>
+<div class="wrap">
 
 <img src="/assets/studiolab_cover.jpg" alt="קלטות וידאו ישנות בקופסה" width="1200" height="630" style="margin-bottom:26px">
 
@@ -144,12 +171,12 @@ ARTICLE = """<div class="wrap">
 {cta}
 </div>""".format(t=ART_TITLE, cta=_CTA)
 
-ARTICLES_HUB = """<div class="wrap">
-<nav class="crumb"><a href="/">דף הבית</a> &#8592; מאמרים</nav>
-<header class="pg">
+ARTICLES_HUB = """<header class="pg-head"><div class="in">
 <h1>מאמרים וטיפים</h1>
 <p class="tagline">מידע מקצועי על שימור וידאו וסרטים ישנים.</p>
-</header>
+</div></header>
+<nav class="crumb"><a href="/">דף הבית</a> &#8592; מאמרים</nav>
+<div class="wrap">
 <div class="grid">
 <a class="card" href="{slug}"><h3>{t}</h3>
 <p>איך לזהות את הפורמט, איך לזהות קלטת בסיכון, איך לאחסן נכון, ואיזו איכות באמת אפשר לצפות לה.</p>
@@ -215,8 +242,8 @@ pages.append((ART_SLUG, "0.8"))
 # --- 404: the Base44 article lived at a hash URL. Nothing links to it, but a
 #     visitor with it bookmarked should land somewhere useful, not on an error.
 NOT_FOUND = """<div class="wrap">
-<header class="pg"><h1>העמוד לא נמצא</h1>
-<p class="tagline">ייתכן שהכתובת השתנתה. הנה מה שיש באתר:</p></header>
+<header class="pg-head"><div class="in"><h1>העמוד לא נמצא</h1>
+<p class="tagline">ייתכן שהכתובת השתנתה. הנה מה שיש באתר:</p></div></header>
 <div class="grid">
 <a class="card" href="/"><h3>דף הבית</h3><p>שירותים, מחירון ויצירת קשר.</p></a>
 <a class="card" href="/vhs-to-digital/"><h3>המרת VHS</h3><p>הפורמט הביתי הקלאסי.</p></a>

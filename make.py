@@ -175,24 +175,53 @@ ARTICLE = """<header class="pg-head"><div class="in">
 {cta}
 </div>""".format(t=ART_TITLE, cta=_CTA)
 
+# --- extra articles, authored standalone and loaded from the manifest ----
+# Each answers a real searched question, opens with a direct answer, and states
+# only source-verified facts. Bodies live in D:\yupoo\studiolab-seo\articles\.
+ART_SRC = os.path.join(SRC, "articles")
+EXTRA_ARTICLES = []
+_man = os.path.join(ART_SRC, "_manifest.json")
+if os.path.exists(_man):
+    for a in json.loads(io.open(_man, encoding="utf-8").read()):
+        a["body"] = io.open(os.path.join(ART_SRC, a["slug"] + ".html"),
+                            encoding="utf-8").read()
+        a["published"] = "2026-08-24"
+        EXTRA_ARTICLES.append(a)
+
+# every article, oldest first, as (slug-url, title, desc, body, published)
+ALL_ARTICLES = [(ART_SLUG, ART_TITLE, ART_DESC, ARTICLE, "2026-08-22")]
+for a in EXTRA_ARTICLES:
+    ALL_ARTICLES.append(("/articles/%s/" % a["slug"], a["title"], a["desc"],
+                         a["body"], a["published"]))
+
+
+def _art_head(title, desc):
+    return ('<header class="pg-head"><div class="in">\n<h1>%s</h1>\n'
+            '<p class="tagline">%s</p>\n</div></header>\n' % (title, desc))
+
+
+def _hub_card(url, title, desc):
+    return ('<a class="card" href="%s"><h3>%s</h3><p>%s</p>'
+            '<span class="go">קריאה &#8592;</span></a>' % (url, title, desc))
+
+
 ARTICLES_HUB = """<header class="pg-head"><div class="in">
 <h1>מאמרים וטיפים</h1>
-<p class="tagline">מידע מקצועי על שימור וידאו וסרטים ישנים.</p>
+<p class="tagline">מידע מקצועי על שימור, המרה ואיכות של וידאו, סרטים ואודיו ישנים.</p>
 </div></header>
 <nav class="crumb"><a href="/">דף הבית</a> &#8592; מאמרים</nav>
 <div class="wrap">
 <div class="grid">
-<a class="card" href="{slug}"><h3>{t}</h3>
-<p>איך לזהות את הפורמט, איך לזהות קלטת בסיכון, איך לאחסן נכון, ואיזו איכות באמת אפשר לצפות לה.</p>
-<span class="go">קריאה &#8592;</span></a>
+{cards}
 </div>
 <h2>מדריכי הפורמטים</h2>
 <div class="grid">
 <a class="card" href="/vhs-to-digital/"><h3>המרת VHS ו-VHS-C</h3><p>איכות, תהליך, קלטות פגומות ומחירים.</p><span class="go">לעמוד &#8592;</span></a>
 <a class="card" href="/video8-hi8-digital8/"><h3>Video8, Hi8 ו-Digital8</h3><p>איך מזהים, ולמה לא צריך את המצלמה המקורית.</p><span class="go">לעמוד &#8592;</span></a>
 <a class="card" href="/8mm-super8/"><h3>סרטי 8 מ&#34;מ ו-Super 8</h3><p>פריים-אחר-פריים, ותסמונת החומץ.</p><span class="go">לעמוד &#8592;</span></a>
+<a class="card" href="/audio-digitization/"><h3>תקליטים וקלטות שמע</h3><p>ויניל, קלטות שמע וסלילים — MP3 או WAV.</p><span class="go">לעמוד &#8592;</span></a>
 </div>
-</div>""".format(slug=ART_SLUG, t=ART_TITLE)
+</div>""".format(cards="\n".join(_hub_card(u, t, d) for u, t, d, _b, _p in ALL_ARTICLES))
 
 # ================================================================ EMIT
 def write(path, text, binary=False):
@@ -227,21 +256,30 @@ write("/articles/index.html", shell("/articles/", "מאמרים וטיפים | S
       ARTICLES_HUB, [crumbs([("דף הבית", "/"), ("מאמרים", "/articles/")])]))
 pages.append(("/articles/", "0.7"))
 
-art_graph = [
-  crumbs([("דף הבית", "/"), ("מאמרים", "/articles/"), (ART_TITLE, ART_SLUG)]),
-  {"@type": "Article", "@id": SITE + ART_SLUG + "#article",
-   "headline": ART_TITLE, "description": ART_DESC,
-   "image": SITE + "/assets/studiolab_cover.jpg",
-   "datePublished": "2026-08-22", "dateModified": UPDATED,
-   "inLanguage": "he-IL",
-   "author": {"@type": "Person", "name": "אוהד פרקש"},
-   "publisher": {"@id": SITE + "/#business"},
-   "mainEntityOfPage": SITE + ART_SLUG},
-]
-write(ART_SLUG + "index.html",
-      shell(ART_SLUG, ART_TITLE + " | STUDIOLAB", ART_DESC, ARTICLE, art_graph,
-            og_img="/assets/studiolab_cover.jpg"))
-pages.append((ART_SLUG, "0.8"))
+for _url, _title, _desc, _body, _pub in ALL_ARTICLES:
+    # the first article already carries its own head+crumb inside _body; the
+    # manifest articles are bare bodies, so give them the standard head+crumb.
+    if _url == ART_SLUG:
+        page_body = _body
+    else:
+        crumb = ('<nav class="crumb"><a href="/">דף הבית</a> &#8592; '
+                 '<a href="/articles/">מאמרים</a> &#8592; %s</nav>' % _title)
+        page_body = _art_head(_title, _desc) + crumb + '<div class="wrap">' + _body + "\n" + _CTA + "</div>"
+    graph = [
+        crumbs([("דף הבית", "/"), ("מאמרים", "/articles/"), (_title, _url)]),
+        {"@type": "Article", "@id": SITE + _url + "#article",
+         "headline": _title, "description": _desc,
+         "image": SITE + "/assets/studiolab_cover.jpg",
+         "datePublished": _pub, "dateModified": UPDATED,
+         "inLanguage": "he-IL",
+         "author": {"@type": "Person", "name": "אוהד פרקש"},
+         "publisher": {"@id": SITE + "/#business"},
+         "mainEntityOfPage": SITE + _url},
+    ]
+    write(_url + "index.html",
+          shell(_url, _title + " | STUDIOLAB", _desc, page_body, graph,
+                og_img="/assets/studiolab_cover.jpg"))
+    pages.append((_url, "0.8"))
 
 # --- 404: the Base44 article lived at a hash URL. Nothing links to it, but a
 #     visitor with it bookmarked should land somewhere useful, not on an error.

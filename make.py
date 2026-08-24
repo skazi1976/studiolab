@@ -375,6 +375,9 @@ optical emulsion, so higher-resolution scanning does recover real detail.
 """ % dict(addr=ADDR, disp=PHONE_DISPLAY, site=SITE))
 
 write("CNAME", "studiolab.co.il\n")
+# IndexNow ownership key — proves we own the key used to push URLs to
+# Bing/Yandex/DuckDuckGo. Must stay reachable at the site root.
+write("65d749aaefd95618f1bba7ee03986bf9.txt", "65d749aaefd95618f1bba7ee03986bf9")
 
 print("built %d pages + assets:" % (len(pages) + 1))
 for u, _ in pages:

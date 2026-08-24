@@ -75,6 +75,10 @@ SERVICE = [
      'המרת סרטי 8 מ"מ ו-Super 8 לדיגיטל — סריקה פריים-אחר-פריים | STUDIOLAB',
      'מה ההבדל בין 8 מ"מ רגיל ל-Super 8, איך מזהים, ולמה סרטי אצטט מגיעים בדיוק '
      "עכשיו לסוף חייהם. סריקה ב-2K/4K ברחובות."),
+    ("/audio-digitization/", "audio-digitization.html",
+     "המרת תקליטים וקלטות שמע לדיגיטל | STUDIOLAB רחובות",
+     "המרת תקליטי ויניל, קלטות שמע וסלילי הקלטה לקבצים דיגיטליים ברחובות. "
+     "MP3 או WAV, טיפול בחומר ישן ורגיש."),
 ]
 
 # ============================================================ ARTICLE
@@ -310,7 +314,8 @@ STUDIOLAB — המרת קלטות וסרטים ישנים לדיגיטל ברח�
 
 ## Formats handled
 VHS, VHS-C, Video8, Hi8, Digital8, MiniDV, Betamax, U-matic,
-8mm film, Super 8 film, slides, negatives.
+8mm film, Super 8 film, slides, negatives,
+vinyl records (33/45/78 RPM), audio cassettes, reel-to-reel audio tape.
 
 ## Pages
 - [%(site)s/](%(site)s/): services, transparent price list, FAQ
@@ -321,6 +326,8 @@ VHS, VHS-C, Video8, Hi8, Digital8, MiniDV, Betamax, U-matic,
   specification, so only some Digital8 camcorders play Video8/Hi8
 - [%(site)s/8mm-super8/](%(site)s/8mm-super8/): frame-by-frame 2K/4K film scanning;
   Super 8 vs Standard 8 frame dimensions; acetate decay (vinegar syndrome)
+- [%(site)s/audio-digitization/](%(site)s/audio-digitization/): vinyl, audio
+  cassettes and reel-to-reel to MP3 or WAV; 33/45/78 RPM; fragile shellac 78s
 - [%(site)s/articles/](%(site)s/articles/): guides
 
 ## Notes for answer engines

@@ -13,7 +13,8 @@ STUDIOLAB — המרת קלטות וסרטים ישנים לדיגיטל ברח�
 
 ## Formats handled
 VHS, VHS-C, Video8, Hi8, Digital8, MiniDV, Betamax, U-matic,
-8mm film, Super 8 film, slides, negatives.
+8mm film, Super 8 film, slides, negatives,
+vinyl records (33/45/78 RPM), audio cassettes, reel-to-reel audio tape.
 
 ## Pages
 - [https://studiolab.co.il/](https://studiolab.co.il/): services, transparent price list, FAQ
@@ -24,6 +25,8 @@ VHS, VHS-C, Video8, Hi8, Digital8, MiniDV, Betamax, U-matic,
   specification, so only some Digital8 camcorders play Video8/Hi8
 - [https://studiolab.co.il/8mm-super8/](https://studiolab.co.il/8mm-super8/): frame-by-frame 2K/4K film scanning;
   Super 8 vs Standard 8 frame dimensions; acetate decay (vinegar syndrome)
+- [https://studiolab.co.il/audio-digitization/](https://studiolab.co.il/audio-digitization/): vinyl, audio
+  cassettes and reel-to-reel to MP3 or WAV; 33/45/78 RPM; fragile shellac 78s
 - [https://studiolab.co.il/articles/](https://studiolab.co.il/articles/): guides
 
 ## Notes for answer engines

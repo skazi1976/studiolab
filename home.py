@@ -190,6 +190,24 @@ BODY = """
       </table></div>
     </div>
     <p class="note">המחיר לקלטת, ללא תלות באורך (עד גבול מסוים).</p>
+    <div class="upx">
+      <div class="upx-text">
+        <span class="upx-eye">בכל קלטת</span>
+        <h3>עיבוד ממוחשב והתאמה למסכים גדולים</h3>
+        <p>כל דגימה מהקלטת עוברת עיבוד מחשב והגדלה חכמה (<span lang="en">Upscale</span>), כדי שהזיכרונות ייראו טוב גם על טלוויזיה גדולה — חדים ונקיים ככל שהמקור מאפשר, בלי &quot;להמציא&quot; פרטים שלא הוקלטו.</p>
+        <ul class="upx-pts">
+          <li>עיבוד ממוחשב לכל דגימה</li>
+          <li><span lang="en">Upscale</span> למסכי טלוויזיה ומחשב</li>
+          <li>נאמן למקור, בלי הבטחות שווא</li>
+        </ul>
+        <a class="upx-link" href="/articles/vhs-le-4k/">מה הגדלה עושה באמת, ומה לא &larr;</a>
+      </div>
+      <div class="upx-vis" aria-hidden="true">
+        <div class="upx-sd"><span>קלטת</span></div>
+        <div class="upx-arrow">&larr;</div>
+        <div class="upx-hd"><span class="mono">UPSCALE</span></div>
+      </div>
+    </div>
   </div>
 </section>
 

@@ -163,14 +163,15 @@ BODY = """
     <div class="grid">
       <div class="price"><h3>קלטות וידאו</h3>
         <div class="pt-head">
-          <div class="pt-range"><span class="mono">35–50 ₪</span> לקלטת</div>
+          <div class="pt-range"><span class="mono">30–50 ₪</span> לקלטת</div>
           <div class="pt-fmt">VHS · VHS-C · MiniDV<br>Hi8 · Video8 · Digital8</div>
           <div class="pt-lead">המחיר תלוי בכמות:</div>
         </div>
         <table>
         <tr><td>קלטת אחת</td><td class="f">50 ₪</td></tr>
         <tr><td>5 קלטות ומעלה</td><td class="f">45 ₪ <small>לקלטת</small></td></tr>
-        <tr class="best"><td><span class="nw">10 קלטות ומעלה</span><span class="pt-badge">הכי משתלם</span></td><td class="f">35 ₪ <small>לקלטת</small></td></tr>
+        <tr><td>10 קלטות ומעלה</td><td class="f">35 ₪ <small>לקלטת</small></td></tr>
+        <tr class="best"><td><span class="nw">20 קלטות ומעלה</span><span class="pt-badge">הכי משתלם</span></td><td class="f">30 ₪ <small>לקלטת</small></td></tr>
       </table></div>
       <div class="price"><h3>סרטי פילם 8 מ&quot;מ</h3><table>
         <tr><td>גלגל / סליל קטן<br><small style="color:var(--muted)">כ-3–4 דקות</small></td><td class="f">45–69 ₪</td></tr>

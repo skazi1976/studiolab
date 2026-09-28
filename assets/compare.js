@@ -54,14 +54,20 @@
       requestAnimationFrame(step);
     }
 
+    var inView = false;
     if ("IntersectionObserver" in window) {
       new IntersectionObserver(function (es) {
         es.forEach(function (e) {
-          if (e.isIntersecting) { load(); if (!reduce) { play(); hint(); } }
+          inView = e.isIntersecting;
+          if (inView) { load(); if (!reduce) { play(); hint(); } }
           else pause();
         });
       }, { rootMargin: "120px 0px", threshold: 0.25 }).observe(fig);
     } else { load(); }
+    // A page opened in a background tab can't start video; start it when the tab comes to the front.
+    document.addEventListener("visibilitychange", function () {
+      if (document.visibilityState === "visible" && inView && !reduce && after.paused) play();
+    });
   }
 
   function init() { [].forEach.call(document.querySelectorAll(".cmp"), setup); }

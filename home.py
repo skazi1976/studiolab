@@ -264,7 +264,7 @@ BODY = """
     <p class="note">שלושה קטעים קצרים מאותו סרט, מסונכרנים פריים אחר פריים — רואים בדיוק את אותו רגע בשתי הגרסאות.</p>
   </div>
 </section>
-<script src="/assets/compare.js" defer></script>
+<script src="/assets/compare.js?v=2" defer></script>
 
 <section>
   <div class="in narrow">

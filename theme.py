@@ -201,6 +201,34 @@ a.card .go{display:block;margin-top:14px;color:var(--amber-600);font-weight:700;
 @media(max-width:820px){.upx{flex-direction:column;align-items:stretch;padding:26px 22px;gap:26px}
   .upx h3{font-size:22px}.upx-hd{width:180px}.upx-sd{width:76px}}
 @media(prefers-reduced-motion:no-preference){.upx-hd{animation:upx-glow 3.2s ease-in-out infinite}}
+/* ---------- before/after video comparison ---------- */
+.cmp-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px;max-width:1080px;margin:0 auto}
+.cmp-grid>.cmp:first-child{grid-column:1 / -1}
+.cmp{margin:0}
+.cmp-stage{position:relative;aspect-ratio:4/3;border-radius:14px;overflow:hidden;background:#0B1017;
+  box-shadow:0 18px 40px -22px rgba(15,23,42,.6);--pos:50%}
+.cmp-stage video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.cmp-before{clip-path:inset(0 0 0 var(--pos))}
+.cmp-tag{position:absolute;top:12px;z-index:2;font-size:13px;font-weight:700;padding:4px 12px;border-radius:999px;
+  pointer-events:none;letter-spacing:.02em}
+.cmp-b{right:12px;background:rgba(15,23,42,.72);color:#fff}
+.cmp-a{left:12px;background:var(--amber);color:#0F172A}
+.cmp-bar{position:absolute;top:0;bottom:0;left:var(--pos);width:3px;margin-left:-1.5px;background:#fff;z-index:2;
+  pointer-events:none;box-shadow:0 0 12px rgba(0,0,0,.45)}
+.cmp-bar span{position:absolute;top:50%;left:50%;width:44px;height:44px;margin:-22px 0 0 -22px;border-radius:50%;
+  background:#fff;box-shadow:0 4px 14px rgba(0,0,0,.35)}
+.cmp-bar span::before,.cmp-bar span::after{content:"";position:absolute;top:50%;width:0;height:0;margin-top:-7px;
+  border:7px solid transparent}
+.cmp-bar span::before{left:7px;border-right-color:#0F172A}
+.cmp-bar span::after{right:7px;border-left-color:#0F172A}
+.cmp-range{position:absolute;inset:0;width:100%;height:100%;margin:0;opacity:0;z-index:3;cursor:ew-resize;
+  -webkit-appearance:none;appearance:none;background:transparent;touch-action:pan-y}
+.cmp-range::-webkit-slider-thumb{-webkit-appearance:none;width:56px;height:600px}
+.cmp-range::-moz-range-thumb{width:56px;height:600px;border:0}
+.cmp-stage:has(.cmp-range:focus-visible){outline:3px solid var(--amber);outline-offset:3px}
+.cmp figcaption{margin-top:12px;font-size:15.5px;line-height:1.6;color:var(--body)}
+.cmp figcaption strong{color:var(--ink)}
+@media(max-width:760px){.cmp-grid{grid-template-columns:1fr;gap:26px}}
 @keyframes upx-glow{50%{box-shadow:0 0 0 10px rgba(245,158,11,.08),0 12px 30px -10px rgba(0,0,0,.6)}}
 
 /* ---------- article / service body ---------- */

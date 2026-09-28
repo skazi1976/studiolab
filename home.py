@@ -178,6 +178,9 @@ BODY = """
         <tr><td>Frame by Frame<br><small style="color:var(--muted)">איכות מקסימלית 2K/4K</small></td><td class="f">13–25 ₪ לדקה</td></tr>
         <tr><td>לפי אורך (50 רגל)<br><small style="color:var(--muted)">ללא פס קול</small></td><td class="f">60 ₪</td></tr>
       </table></div>
+      <div class="price"><h3>סריקת נגטיבים</h3><table>
+        <tr><td>סליל נגטיב — 36 תמונות<br><small style="color:var(--muted)">פחות משקל לתמונה</small></td><td class="f">35 ₪</td></tr>
+      </table></div>
       <div class="price"><h3>שירותים נוספים</h3><table>
         <tr><td>תיקון קלטות פגומות</td><td class="f">מ-60 ₪</td></tr>
         <tr><td>דיסק און קי / DVD</td><td class="f">40–70 ₪</td></tr>

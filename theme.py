@@ -162,6 +162,9 @@ a.card .go{display:block;margin-top:14px;color:var(--amber-600);font-weight:700;
 .pt-badge{display:table;margin-top:6px;background:var(--amber);color:#0F172A;font-size:12px;
   font-weight:700;padding:2px 9px;border-radius:999px;white-space:nowrap}
 .price .nw{white-space:nowrap}
+/* price list: 3 per row, a short last row centred instead of hugging one side */
+#pricing .grid{display:flex;flex-wrap:wrap;justify-content:center}
+#pricing .grid>.price{flex:1 1 300px;max-width:372px}
 /* ---------- upscale band (under the price list) ---------- */
 .upx{margin-top:34px;display:flex;align-items:center;gap:36px;padding:34px 38px;border-radius:16px;color:#E2E8F0;
   background:linear-gradient(to bottom right,var(--navy-900),var(--blue-900),var(--navy-800));

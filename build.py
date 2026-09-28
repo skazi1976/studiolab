@@ -26,6 +26,9 @@ UPDATED = "2026-08-23"
 
 # The look lives in theme.py, measured off the original site.
 from theme import CSS
+import hashlib
+# Cache-bust: the stylesheet URL changes whenever the CSS does (GitHub Pages caches it 10 min, phones longer).
+CSS_VER = hashlib.md5(CSS.strip().encode("utf-8")).hexdigest()[:8]
 
 # ------------------------------------------------------------------- schemas
 BUSINESS = {
@@ -152,7 +155,7 @@ def shell(path, title, desc, body, graph, og_img="/assets/og-logo.png"):
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700;800&family=Assistant:wght@300;400;600;700&family=IBM+Plex+Mono:wght@500&display=swap">
-<link rel="stylesheet" href="/css/site.css">
+<link rel="stylesheet" href="/css/site.css?v=%(css_ver)s">
 <script type="application/ld+json">
 %(ld)s
 </script>
@@ -163,6 +166,6 @@ def shell(path, title, desc, body, graph, og_img="/assets/og-logo.png"):
 %(footer)s
 </body>
 </html>""" % dict(title=title, desc=desc, url=url, site=SITE, img=og_img,
-                  ld=ld, nav=nav_html(path), body=body, footer=FOOTER)
+                  ld=ld, nav=nav_html(path), body=body, footer=FOOTER, css_ver=CSS_VER)
 
 

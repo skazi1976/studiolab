@@ -232,8 +232,8 @@ BODY = """
     <div class="cmp-grid">
       <figure class="cmp">
         <div class="cmp-stage">
-          <video class="cmp-after" muted playsinline loop preload="none" poster="/assets/samples/veil-after.jpg" data-src="/assets/samples/veil-after.mp4" aria-hidden="true"></video>
-          <video class="cmp-before" muted playsinline loop preload="none" poster="/assets/samples/veil-before.jpg" data-src="/assets/samples/veil-before.mp4" aria-hidden="true"></video>
+          <video class="cmp-after" muted playsinline loop preload="none" poster="/assets/samples/veil-after.jpg?v=2" data-src="/assets/samples/veil-after.mp4?v=2" aria-hidden="true"></video>
+          <video class="cmp-before" muted playsinline loop preload="none" poster="/assets/samples/veil-before.jpg?v=2" data-src="/assets/samples/veil-before.mp4?v=2" aria-hidden="true"></video>
           <span class="cmp-tag cmp-b">לפני</span><span class="cmp-tag cmp-a">אחרי העיבוד</span>
           <span class="cmp-bar" aria-hidden="true"><span></span></span>
           <input class="cmp-range" type="range" min="0" max="100" value="50" dir="ltr" aria-label="השוואת לפני ואחרי: רגע הנרות. הזיזו כדי לחשוף">
@@ -242,8 +242,8 @@ BODY = """
       </figure>
       <figure class="cmp">
         <div class="cmp-stage">
-          <video class="cmp-after" muted playsinline loop preload="none" poster="/assets/samples/arch-after.jpg" data-src="/assets/samples/arch-after.mp4" aria-hidden="true"></video>
-          <video class="cmp-before" muted playsinline loop preload="none" poster="/assets/samples/arch-before.jpg" data-src="/assets/samples/arch-before.mp4" aria-hidden="true"></video>
+          <video class="cmp-after" muted playsinline loop preload="none" poster="/assets/samples/arch-after.jpg?v=2" data-src="/assets/samples/arch-after.mp4?v=2" aria-hidden="true"></video>
+          <video class="cmp-before" muted playsinline loop preload="none" poster="/assets/samples/arch-before.jpg?v=2" data-src="/assets/samples/arch-before.mp4?v=2" aria-hidden="true"></video>
           <span class="cmp-tag cmp-b">לפני</span><span class="cmp-tag cmp-a">אחרי העיבוד</span>
           <span class="cmp-bar" aria-hidden="true"><span></span></span>
           <input class="cmp-range" type="range" min="0" max="100" value="50" dir="ltr" aria-label="השוואת לפני ואחרי: חתן וכלה ליד קשת הפרחים. הזיזו כדי לחשוף">
@@ -252,8 +252,8 @@ BODY = """
       </figure>
       <figure class="cmp">
         <div class="cmp-stage">
-          <video class="cmp-after" muted playsinline loop preload="none" poster="/assets/samples/dance-after.jpg" data-src="/assets/samples/dance-after.mp4" aria-hidden="true"></video>
-          <video class="cmp-before" muted playsinline loop preload="none" poster="/assets/samples/dance-before.jpg" data-src="/assets/samples/dance-before.mp4" aria-hidden="true"></video>
+          <video class="cmp-after" muted playsinline loop preload="none" poster="/assets/samples/dance-after.jpg?v=2" data-src="/assets/samples/dance-after.mp4?v=2" aria-hidden="true"></video>
+          <video class="cmp-before" muted playsinline loop preload="none" poster="/assets/samples/dance-before.jpg?v=2" data-src="/assets/samples/dance-before.mp4?v=2" aria-hidden="true"></video>
           <span class="cmp-tag cmp-b">לפני</span><span class="cmp-tag cmp-a">אחרי העיבוד</span>
           <span class="cmp-bar" aria-hidden="true"><span></span></span>
           <input class="cmp-range" type="range" min="0" max="100" value="50" dir="ltr" aria-label="השוואת לפני ואחרי: הריקודים באולם. הזיזו כדי לחשוף">

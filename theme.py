@@ -165,6 +165,12 @@ a.card .go{display:block;margin-top:14px;color:var(--amber-600);font-weight:700;
 /* price list: 3 per row, a short last row centred instead of hugging one side */
 #pricing .grid{display:flex;flex-wrap:wrap;justify-content:center}
 #pricing .grid>.price{flex:1 1 300px;max-width:372px}
+.pt-sub{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:14px 24px;
+  background:var(--alt);border-top:1px solid var(--card-line);border-bottom:1px solid var(--card-line);
+  font-weight:700;font-size:16px;color:var(--ink)}
+.pt-sub .pt-badge{margin:0;display:inline-block}
+.pt-inc{padding:14px 24px 8px;font-size:14px;line-height:1.75;color:var(--body);border-top:1px solid var(--line)}
+.pt-min{padding:0 24px 16px;font-size:13px;line-height:1.6;color:var(--muted)}
 /* ---------- upscale band (under the price list) ---------- */
 .upx{margin-top:34px;display:flex;align-items:center;gap:36px;padding:34px 38px;border-radius:16px;color:#E2E8F0;
   background:linear-gradient(to bottom right,var(--navy-900),var(--blue-900),var(--navy-800));

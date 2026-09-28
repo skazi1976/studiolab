@@ -153,6 +153,15 @@ a.card .go{display:block;margin-top:14px;color:var(--amber-600);font-weight:700;
 .price tr:last-child td{border-bottom:0}
 .price td.f{text-align:left;color:var(--ink);font-weight:600;white-space:nowrap}
 .note{text-align:center;color:var(--muted);font-size:15px;margin-top:18px}
+.pt-head{padding:18px 24px 8px}
+.pt-range{font-size:26px;font-weight:800;color:var(--ink);line-height:1.2}
+.pt-fmt{color:var(--muted);font-size:14px;margin-top:6px}
+.pt-lead{margin-top:14px;font-weight:600;color:var(--body);font-size:15px}
+.price td.f small{font-family:inherit;font-weight:400;color:var(--muted);font-size:13px}
+.price tr.best td{background:rgba(245,158,11,.12)}
+.pt-badge{display:table;margin-top:6px;background:var(--amber);color:#0F172A;font-size:12px;
+  font-weight:700;padding:2px 9px;border-radius:999px;white-space:nowrap}
+.price .nw{white-space:nowrap}
 
 /* ---------- article / service body ---------- */
 .wrap{max-width:820px;margin:0 auto;padding:0 20px}

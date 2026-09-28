@@ -168,7 +168,7 @@ BODY = """
           <div class="pt-lead">המחיר תלוי בכמות:</div>
         </div>
         <table>
-        <tr><td>קלטת אחת</td><td class="f">50 ₪</td></tr>
+        <tr><td>קלטת בודדת</td><td class="f">50 ₪</td></tr>
         <tr><td>5 קלטות ומעלה</td><td class="f">45 ₪ <small>לקלטת</small></td></tr>
         <tr><td>10 קלטות ומעלה</td><td class="f">35 ₪ <small>לקלטת</small></td></tr>
         <tr class="best"><td><span class="nw">20 קלטות ומעלה</span><span class="pt-badge">הכי משתלם</span></td><td class="f">30 ₪ <small>לקלטת</small></td></tr>

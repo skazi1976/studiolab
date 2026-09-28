@@ -16,7 +16,9 @@
 
     function load() {
       if (loaded) return; loaded = true;
-      [after, before].forEach(function (v) { v.src = v.getAttribute("data-src"); v.load(); });
+      // Full HD only where it can be seen (the large desktop player); phones and the small players get the light file.
+      var hd = stage.clientWidth >= 600 && !(navigator.connection && navigator.connection.saveData);
+      [after, before].forEach(function (v) { v.src = v.getAttribute(hd && v.getAttribute("data-src-hd") ? "data-src-hd" : "data-src"); v.load(); });
     }
     function play() {
       load();

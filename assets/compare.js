@@ -18,17 +18,26 @@
       if (loaded) return; loaded = true;
       // Full HD only where it can be seen (the large desktop player); phones and the small players get the light file.
       var hd = stage.clientWidth >= 600 && !(navigator.connection && navigator.connection.saveData);
+      [after, before].forEach(function (v) { v.preload = "auto"; });
       [after, before].forEach(function (v) { v.src = v.getAttribute(hd && v.getAttribute("data-src-hd") ? "data-src-hd" : "data-src"); v.load(); });
     }
-    function play() {
-      load();
+    // High-bitrate clips: don't start until BOTH can play through, then start them together from 0 —
+    // otherwise the faster-loading one runs ahead and the comparison shows two different moments.
+    var wantPlay = false, started = false;
+    function bothReady() { return after.readyState >= 4 && before.readyState >= 4; }
+    function start() {
+      if (!wantPlay || !bothReady()) return;
+      if (!started) { started = true; after.currentTime = 0; before.currentTime = 0; }
       var p = after.play(); if (p && p.catch) p.catch(function () {});
       var q = before.play(); if (q && q.catch) q.catch(function () {});
     }
-    function pause() { after.pause(); before.pause(); }
+    after.addEventListener("canplaythrough", start);
+    before.addEventListener("canplaythrough", start);
+    function play() { load(); wantPlay = true; start(); }
+    function pause() { wantPlay = false; after.pause(); before.pause(); }
     function sync() {
       if (Math.abs(before.currentTime - after.currentTime) > 0.08) before.currentTime = after.currentTime;
-      if (after.paused !== before.paused) { if (after.paused) before.pause(); else before.play().catch(function () {}); }
+      if (after.paused !== before.paused && started) { if (after.paused) before.pause(); else before.play().catch(function () {}); }
     }
     after.addEventListener("timeupdate", sync);
     after.addEventListener("seeked", sync);

@@ -81,6 +81,7 @@ BODY = """
     <p class="lead">להציל את הזיכרונות שלכם מהזמן — המרה מקצועית של קלטות וידאו וסרטי פילם לפורמט דיגיטלי.</p>
     <div class="btns">
       <a class="btn btn-primary" href="#quote">קבלו הצעת מחיר</a>
+      <a class="btn btn-samples" href="#samples"><span class="play" aria-hidden="true"></span>דוגמאות לפני ואחרי</a>
       <a class="btn btn-ghost" href="#pricing">למחירון</a>
     </div>
     <div class="strip">{strip}</div>

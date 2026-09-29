@@ -93,7 +93,7 @@ def service(name, desc, url, low, high, count, offer_note):
 
 
 # -------------------------------------------------------------------- chrome
-NAV = [("/", "דף הבית"), ("/vhs-to-digital/", "VHS"),
+NAV = [("/", "דף הבית"), ("/#samples", "דוגמאות"), ("/vhs-to-digital/", "VHS"),
        ("/video8-hi8-digital8/", "Video8 · Hi8"), ("/8mm-super8/", '8 מ"מ'),
        ("/articles/", "מאמרים"), ("/#quote", "הצעת מחיר")]
 
